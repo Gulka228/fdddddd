@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html><head>
+	<title>Сетевой Город. Образование. Дневник (2 четверть)</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="Expires" content="10"/>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="icon" type="image/gif" href="/images/Common/faviconnetcity.gif" />
+	<link rel="stylesheet" type="text/css" href="/vendor/bootstrap3-dialog/css/bootstrap-dialog.min.css"/>
+	<link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="/vendor/select2/css/select2.min.css"/>
+	<link rel="stylesheet" type="text/css" href="/vendor/select2/css/select2-bootstrap.min.css"/>
+
+	
+		<link rel="stylesheet" type="text/css" href="/vendor/custom/css/core-styles.min.css"/>
+		<link rel="stylesheet" type="text/css" href="/vendor/custom/css/theme-school.min.css"/>
+	
+	<link rel="stylesheet" type="text/css" href="/vendor/custom/fonts/font-awesome/css/font-awesome.min.css">
+	<script src="/js/libs/jquery-1.11.0.min.js" type="text/javascript"></script>
+	<script src="/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="/vendor/bootstrap3-dialog/js/bootstrap-dialog.min.js" type="text/javascript"></script>
+	<script src="/js/libs/bowser.min.js" type="text/javascript"></script>
+	<script src="/js/libs/handlebars-v3.0.0.min.js" type="text/javascript"></script>
+	<script src="/js/libs/underscore-min.js" type="text/javascript"></script>
+	<script src="/js/libs/momentjs/moment.min.js" type="text/javascript"></script>
+
+	
+	<script src="/js/lng/language_ru.js?ver=3.10.31549" type="text/javascript"></script>
+	<script src="/js/lng/language_ru_2.js?ver=3.10.31549" type="text/javascript"></script>
+	<script src="/js/core-scripts.js?ver=3.10.31549" type="text/javascript"></script>
+	
+	<script type="text/javascript">
+		var appContext = {
+			now: "20.12.2020 12:20:59",
+			productName: "Сетевой Город. Образование",
+			version: "3.10.31549",
+			serverId: "86552768-BB75-4746-9C5A-47B56221A3ED"
+			, serverTimeZone: 6
+		};
+	</script>
+		
+	<script type="text/javascript">
+		var strATTok = "762637440636511633207324";
+		var bReadonly = false;
+		var pageVer = 693318059;
+		var wasSavedMsg = "";
+		appContext.at = "762637440636511633207324";
+		appContext.readOnly = false;
+		appContext.funcType = 2;
+	</script>
+	
+<script><!--
+	var dom=(document.getElementById)? true: false;
+	var ie4=(!dom && document.all)? true: false;
+	var ie5=(dom && document.all)? true: false;
+	var ie=(ie4 || ie5)
+	var opera=(dom && navigator.appName == "Opera")? true : false;
+
+	var wndAltPrintVersion = null;
+	var isMainWindow = true;
+
+		(function() {
+			appContext.fullSchoolName = "Муниципальное автономное общеобразовательное учреждение средняя общеобразовательная школа №146";
+			appContext.currYear = "2020/2021";
+			appContext.userId = "93425";
+			appContext.dateFormat = "d\001mm\001yy\001.";
+			appContext.timeFormat = "h\001mm\001:\001\001";
+			appContext.yearId = "10170";
+		})();
+
+	function ShowAnnouncements() {
+		checkForChanges().then(function(){
+			postTo("/asp/Announce/ViewAnnouncements.asp");
+		});
+	}
+
+	function ShowMail() {
+		openPopupWindow("_mail", "/asp/Messages/MailBox.asp", 950, 660);
+	}
+
+	
+	function ShowForum() {
+		openPopupWindow("_forum", "/asp/Forum/Forum.asp", 950, 660)
+	}
+	
+	
+	function changeYear(yearId) {
+		checkForChanges().then(function(){
+			postTo("/asp/SetupSchool/ChangeYear.asp", { SCHOOLYEARID: yearId })
+		});
+	}
+
+	function openPersonalSettings() {
+		checkForChanges().then(function(){
+			postTo("/asp/MySettings/MySettings.asp", {UID: appContext.userId});
+		});
+	}
+//--></script>
+
+	<script><!--
+	
+	function ShowHelp() {
+		openPopupWindow("_help", "/Help/Assignments.htm", 950, 660)
+	}
+	//--></script>
+	<script><!--
+		deferredResLoader.loadScript("/js/fileAttachments.min.js");
+
+		var learnApp = false;
+		$(document).ready(function() {
+			deferredResLoader.onScriptsLoaded(function() {
+				$.fn.printUtils().initAdditionalFilters([language.Generic.Common.kStud_FI, "Сидлецкая Т. А."]);
+			});
+		});
+
+		var wnd = null;
+		function ShowResults(url, sID, aID, productId) {
+			learnApp = true;
+			var params = {
+				PROXYURL: url, 
+				TTSURL: 'http://NETSITY:80/',
+				STUDENTID: sID,
+				AID: aID
+			};
+
+			if(productId) {
+				params['LAID'] = productId;
+			}
+
+			url = urlHelper.makeUrl('/asp/RemoteHostProxy.asp', params);
+			var winOptions = { url: url, name: '_blank', specs: 'status=yes, toolbar=yes, menubar=yes, location=no, scrollbars=yes, resizable=yes, directories=no, width=750, height=560', winChild: wnd };
+			windowOpen( winOptions );
+			wnd = winOptions.winChild;
+		}
+
+		function dayschedule(date) {
+			$.show.processing();
+			postTo("/asp/Calendar/DayViewS.asp", {date: date});
+		}
+
+		function StartLA(url, classID, aID, productId) {
+			learnApp = true;
+			var params = { 
+				PROXYURL: url,
+				TTSURL: 'http://NETSITY:80/',
+				CID: classID,
+				AID: aID
+			};
+
+			if(productId) {
+				params['LAID'] = productId;
+			}
+
+			url = urlHelper.makeUrl('/asp/RemoteHostProxy.asp', params);
+			var winOptions = { url: url, name: '_blank', specs: 'status=yes, toolbar=yes, menubar=yes, location=no, scrollbars=yes, resizable=yes, directories=no, width=750, height=560', winChild: wnd };
+			windowOpen( winOptions );
+			wnd = winOptions.winChild;
+		}
+
+		function receivingMarksBySms() {
+			SetSelectedMenu('16','/asp/MySettings/MarksBySms.asp');
+			SetSelectedTab('57','/asp/MySettings/MarksBySms.asp');
+		}
+
+		
+			function changeStudent() {
+				DoSubmit(document.Assignments, "");
+			}
+
+			function gotoPage(nPageNo) {
+				var form = document.Assignments;
+				form.elements["PAGE"].value = nPageNo;
+				DoSubmit(form, "");
+			}
+		
+
+		function SubmAssign(AID, CID, TP) {
+			jsSubmit({
+				data: {AID: AID, CID: CID, TP: TP, PCLID_IUP: '15880_0'},
+				action: '/asp/ajax/Assignments/GetAssignmentInfo.asp',
+				onSuccess: function(response) {
+					if(response.data.strScript) {
+						$('body').append(response.data.strScript);
+					}
+
+					$.show.dialog({
+						size: BootstrapDialog.SIZE_WIDE,
+						title: response.data.strTitle,
+						message: response.data.strTable,
+						onhidden: function() {
+							if(learnApp) postTo('/asp/Curriculum/Assignments.asp');
+						}
+					});
+				}
+			});
+		}
+
+		function formTitle(preform) {
+			var preform0 = preform.split(' (')[0];
+			if (preform0.indexOf('<title>') >= 0 && preform0.indexOf('</title>') < 0) {
+				preform0 = preform0 + '</title>';
+			}
+			return preform0;
+		}
+
+		function printStudentBlog() {
+			$('.print-block').printUtils().toPrint( { viewHeader: true, formTitle: formTitle } );
+		}
+
+		function exportStudentBlog() {
+			$('.print-block').printUtils().toExcel( { viewHeader: true, formTitle: formTitle } );
+		}
+		
+    wnd = null;
+    function gotoYaClass() {
+    	var winOptions = { url: 'http://www.yaklass.ru/Account/NetSchoolGate?server=http%3a%2f%2fsg.lyceum130.ru%2f&ns_token=762637440636511633207324&ts=1608445259&nn=1760327810&sg=ts20L6kg053UK93RybTSfdYCCUo1', name: '_blank', winChild: wnd };
+    	windowOpen( winOptions );
+    	wnd = winOptions.winChild;
+    }
+
+	//--></script>
+</head><body class="school"
+				onLoad="setFocus();setDBFree();;"
+				onUnload=""
+				onKeyPress=""
+				onResize="">
+	<div class="header">
+
+		<!--блок правая половина "шапки"-->
+		<div class="block-personal-cabinet">
+			<div class="number-employees-in-system hidden-scr-sm hidden-scr-xs">
+				<p>20 декабря 2020 г. - В системе работает <span class="number-employees-span" id="WorkingInSystemCnt">17</span>
+					<a href="#" type="button" onclick="UpdateWorkInSystemCnt()" title="Список пользователей в сети" >
+						<span class="glyphicon glyphicon-user"></span>
+						<span class="glyphicon glyphicon-user"></span>
+					</a>
+				</p>
+			</div>
+			<ul class="pull-right">
+				<li class="switch-year-text hidden-scr-xs"><p><span class="hidden-scr-sm">текущий </span>2020/2021 <span class="hidden-scr-sm">уч.год</span></p></li>
+					<li class="separator_small"><a href="JavaScript:openPersonalSettings()"><span class="glyphicon glyphicon-user" title="Персональные настройки"></span><span class="hidden-scr-sm" title="Персональные настройки">Сидлецкая Т. А.</span></a></li>
+				
+				<li class="no_separator"><a href="JavaScript:Logout(true);"><span class="icon-off" title="Выход"></span><span class="hidden-scr-sm">Выход</span></a></li>
+			</ul>
+		</div>
+
+		<!--логотип-->
+		<div class="block-logo">
+			<a class="logo logo-school" href="#"></a>
+			<p class="title_product">Сетевой Город. Образование</p>
+			<p class="school">МБОУ СОШ №146</p>
+		</div>
+
+		
+	<div class="btn-menu visible-scr-sm">
+		<div class="btn-menu-body">
+			<span class="icon-reorder"></span>
+		</div>
+		<div class="btn-menu-text">
+			Дневник
+		</div>
+	</div>
+	<div class="navbar navbar-default">
+		<nav class="navbar-inner">
+			<ul class="nav navbar-nav">
+
+	<li class="dropdown">
+		<a class="" data-toggle="dropdown" href="#" >
+			Расписание 
+		</a>
+		
+			<ul class="dropdown-menu"><li class="divider"></li><li><a href="JavaScript:SetSelectedTab(9,'/asp/SetupSchool/Calendar/YearView.asp');" onclick="SetSelectedTab(9,'/asp/SetupSchool/Calendar/YearView.asp');;return false" title="" >Год</a></li><li><a href="JavaScript:SetSelectedTab(18,'/asp/Calendar/MonthViewS.asp');" onclick="SetSelectedTab(18,'/asp/Calendar/MonthViewS.asp');;return false" title="" >Месяц</a></li><li><a href="JavaScript:SetSelectedTab(19,'/asp/Calendar/WeekViewTimeS.asp');" onclick="SetSelectedTab(19,'/asp/Calendar/WeekViewTimeS.asp');;return false" title="" >Неделя</a></li><li><a href="JavaScript:SetSelectedTab(20,'/asp/Calendar/DayViewS.asp');" onclick="SetSelectedTab(20,'/asp/Calendar/DayViewS.asp');;return false" title="" >День</a></li>
+			</ul>
+		
+	</li>
+
+	<li class="dropdown">
+		<a class="" data-toggle="dropdown" href="#" >
+			Отчеты
+		</a>
+		
+			<ul class="dropdown-menu"><li class="divider"></li><li><a href="JavaScript:SetSelectedTab(24,'/asp/Reports/Reports.asp');" onclick="SetSelectedTab(24,'/asp/Reports/Reports.asp');;return false" title="" >Отчеты</a></li>
+			</ul>
+		
+	</li>
+
+	<li class="dropdown active">
+		<a class="" data-toggle="dropdown" href="#" >
+			Дневник
+		</a>
+		
+			<ul class="dropdown-menu"><li class="divider"></li><li class="active"><a href="JavaScript:SetSelectedTab(30,'/asp/Curriculum/Assignments.asp');" onclick="SetSelectedTab(30,'/asp/Curriculum/Assignments.asp');;return false" title="" >Дневник</a></li><li><a href="JavaScript:SetSelectedTab(31,'/asp/LearnApp/QAssignment.asp');" onclick="SetSelectedTab(31,'/asp/LearnApp/QAssignment.asp');;return false" title="" >Учебные курсы</a></li>
+			</ul>
+		
+	</li>
+
+	<li class="dropdown">
+		<a class="" data-toggle="dropdown" href="#" >
+			Ресурсы
+		</a>
+		
+			<ul class="dropdown-menu"><li class="divider"></li><li><a href="JavaScript:SetSelectedTab(40,'/asp/Curriculum/SchoolResources.asp');" onclick="SetSelectedTab(40,'/asp/Curriculum/SchoolResources.asp');;return false" title="" >Каталог ссылок</a></li><li><a href="JavaScript:SetSelectedTab(51,'/asp/SetupSchool/Portfolio/PersonalPortfolios.asp');" onclick="SetSelectedTab(51,'/asp/SetupSchool/Portfolio/PersonalPortfolios.asp');;return false" title="" >Личный портфолио</a></li><li><a href="JavaScript:SetSelectedTab(52,'/asp/SetupSchool/Portfolio/ProjectPortfolios.asp');" onclick="SetSelectedTab(52,'/asp/SetupSchool/Portfolio/ProjectPortfolios.asp');;return false" title="" >Портфолио проектов/тем</a></li><li><a href="JavaScript:SetSelectedTab(8,'/asp/SetupSchool/Resources/SchoolDocs.asp');" onclick="SetSelectedTab(8,'/asp/SetupSchool/Resources/SchoolDocs.asp');;return false" title="" >Документы</a></li>
+			</ul>
+		
+	</li>
+
+	<li class="">
+		<a class="" href="javaScript:SetSelectedMenu('17','/asp/Reports/QualityAssessmentAnalytics.asp'); return false" onclick="SetSelectedMenu('17','/asp/Reports/QualityAssessmentAnalytics.asp'); return false">
+			МСОКО
+		</a>
+		
+	</li>
+			</ul>
+		</nav>
+		
+	</div>
+
+			<div class="slide-menu-left">&nbsp;</div>
+			<div class="slide-menu-right">&nbsp;</div>
+		
+	</div>
+	
+
+	<div class="block-content">
+		<a href="JavaScript:void(0)" onclick="void(0);return false" title="Вернуться" class="back active"><span class="icon-signout"></span></a>
+		<h1 class="title">Дневник<span style='color:green'> (2 четверть)</span></h1>
+
+		
+		<!--мини-меню, расположенное в правой части главного заголовка-->
+		<ul class="top-right-menu">
+			<li><a href="JavaScript:ShowAnnouncements()" onclick="ShowAnnouncements();return false" title="Объявления" style="margin-top: 0px;"><span class="icon-bullhorn"></span></a></li><li><a href="JavaScript:ShowMail()" onclick="ShowMail();return false" title="Почта" ><span class="icon-envelope mail"><span class="numberMail" title="13">13</span></span></a></li><li><a href="JavaScript:ShowForum()" onclick="ShowForum();return false" title="Форум" style="font-size: 26px; margin-top: -2px;"><span class="icon-comments-alt"></span></a></li><li><a href="JavaScript:ShowHelp()" onclick="ShowHelp();return false" title="Справка" ><span class="icon-question-sign"></span></a></li>
+		</ul>
+	
+
+		<!--content-->
+		<div class="content">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-12">
+						
+
+	<form method="post" action="/asp/Curriculum/Assignments.asp" name="Assignments" onsubmit="return false;" >
+		
+	<input type="hidden" name="LoginType" value="0">
+	<input type="hidden" name="AT" value="762637440636511633207324">
+	<input type="hidden" name="VER" value="693318059">
+	<div class="buttons-filters-panel form-horizontal">
+		
+	<div class="row">
+		<div class="col-md-12">
+			<div class="buttons-panel">	<div class="buttons-panel-left"></div><div class="buttons-panel-right"><button title="Для печати" type="button" class="btn btn-default"  onclick="printStudentBlog();return false;"><span class="glyphicon glyphicon-print"></span> <span>На печать</span></button><button title="Экспорт в Excel" type="button" class="btn btn-default"  onclick="exportStudentBlog();return false;"><span class="glyphicon glyphicon-export"></span> <span>Экспорт в Excel</span></button></div>
+				</div>
+			</div>
+	</div>
+			<div class="row">
+				<div class="filters-panel col-md-6 col-lg-6 col-sm-12">
+					<div class="form-group"><label class="control-label col-md-4 col-lg-3 col-sm-4">Неделя</label><div class="col-md-8 col-lg-5 col-sm-8"><div class="input-group"><select class="form-control" Name="DATE" onChange="OnChangeSelect('Assignments','/asp/Curriculum/Assignments.asp');"><option value="31.08.20">(31.08.20 - 6.09.20) :1</option><option value="7.09.20">(7.09.20 - 13.09.20) :2</option><option value="14.09.20">(14.09.20 - 20.09.20) :3</option><option value="21.09.20">(21.09.20 - 27.09.20) :4</option><option value="28.09.20">(28.09.20 - 4.10.20) :5</option><option value="5.10.20">(5.10.20 - 11.10.20) :6</option><option value="12.10.20">(12.10.20 - 18.10.20) :7</option><option value="19.10.20">(19.10.20 - 25.10.20) :8</option><option value="26.10.20">(26.10.20 - 1.11.20) :9</option><option value="2.11.20">(2.11.20 - 8.11.20) :10</option><option value="9.11.20">(9.11.20 - 15.11.20) :11</option><option value="16.11.20">(16.11.20 - 22.11.20) :12</option><option value="23.11.20">(23.11.20 - 29.11.20) :13</option><option value="30.11.20">(30.11.20 - 6.12.20) :14</option><option value="7.12.20">(7.12.20 - 13.12.20) :15</option><option value="14.12.20" selected>(14.12.20 - 20.12.20) :16</option><option value="21.12.20">(21.12.20 - 27.12.20) :17</option><option value="28.12.20">(28.12.20 - 3.01.21) :18</option><option value="4.01.21">(4.01.21 - 10.01.21) :19</option><option value="11.01.21">(11.01.21 - 17.01.21) :20</option><option value="18.01.21">(18.01.21 - 24.01.21) :21</option><option value="25.01.21">(25.01.21 - 31.01.21) :22</option><option value="1.02.21">(1.02.21 - 7.02.21) :23</option><option value="8.02.21">(8.02.21 - 14.02.21) :24</option><option value="15.02.21">(15.02.21 - 21.02.21) :25</option><option value="22.02.21">(22.02.21 - 28.02.21) :26</option><option value="1.03.21">(1.03.21 - 7.03.21) :27</option><option value="8.03.21">(8.03.21 - 14.03.21) :28</option><option value="15.03.21">(15.03.21 - 21.03.21) :29</option><option value="22.03.21">(22.03.21 - 28.03.21) :30</option><option value="29.03.21">(29.03.21 - 4.04.21) :31</option><option value="5.04.21">(5.04.21 - 11.04.21) :32</option><option value="12.04.21">(12.04.21 - 18.04.21) :33</option><option value="19.04.21">(19.04.21 - 25.04.21) :34</option><option value="26.04.21">(26.04.21 - 2.05.21) :35</option><option value="3.05.21">(3.05.21 - 9.05.21) :36</option><option value="10.05.21">(10.05.21 - 16.05.21) :37</option><option value="17.05.21">(17.05.21 - 23.05.21) :38</option><option value="24.05.21">(24.05.21 - 30.05.21) :39</option><option value="31.05.21">(31.05.21 - 6.06.21) :40</option><option value="7.06.21">(7.06.21 - 13.06.21) :41</option><option value="14.06.21">(14.06.21 - 20.06.21) :42</option><option value="21.06.21">(21.06.21 - 27.06.21) :43</option><option value="28.06.21">(28.06.21 - 4.07.21) :44</option><option value="5.07.21">(5.07.21 - 11.07.21) :45</option><option value="12.07.21">(12.07.21 - 18.07.21) :46</option><option value="19.07.21">(19.07.21 - 25.07.21) :47</option><option value="26.07.21">(26.07.21 - 1.08.21) :48</option><option value="2.08.21">(2.08.21 - 8.08.21) :49</option><option value="9.08.21">(9.08.21 - 15.08.21) :50</option><option value="16.08.21">(16.08.21 - 22.08.21) :51</option><option value="23.08.21">(23.08.21 - 29.08.21) :52</option><option value="30.08.21">(30.08.21 - 5.09.21) :53</option></select><span class="input-group-btn"><button title="Предыдущая неделя" type="button" class="btn btn-default"  onclick="$('select[name=\'DATE\'] > option:selected').prop('selected', false).prev().prop('selected', true); $('select[name=\'DATE\']').change();return false;"><span class="glyphicon glyphicon-circle-arrow-left"></span> </button><button title="Следующая неделя" type="button" class="btn btn-default"  onclick="$('select[name=\'DATE\'] > option:selected').prop('selected', false).next().prop('selected', true); $('select[name=\'DATE\']').change();return false;"><span class="glyphicon glyphicon-circle-arrow-right"></span> </button></span>
+		</div></div></div><div class="form-group"><label class="control-label col-md-4 col-lg-3 col-sm-4">Ученики</label><div class="col-md-8 col-lg-5 col-sm-8"><input type="text" class="form-control" value="Сидлецкий Ратмир" name="SID_label" disabled><input type="hidden" name="SID" value="93219"></div></div><div class="form-group"><label class="control-label col-md-4 col-lg-3 col-sm-4">Класс</label><div class="col-md-8 col-lg-5 col-sm-8"><input type="text" class="form-control" value="5а" name="PCLID_IUP_label" disabled><input type="hidden" name="PCLID_IUP" value="15880_0"></div></div>
+				</div>
+			</div>
+	</div>
+	</form>
+
+	
+	
+	<div class="row">
+		<div class="col-md-12 col-lg-12">
+				<div>
+					<table class="table table-bordered table-thin table-xs print-block">
+						<tr valign="top">
+							<th  class="hidden-scr-sm">Срок сдачи</th>
+							<th>Предмет</th>
+							<th>Тип задания</th>
+							<th class="text-nowrap">Тема задания</th>
+							<th>Отметка</th>
+						</tr>
+						<tr class="visible-scr-row-sm"><td colspan="5" class="text-center bg-success"><a href="JavaScript:dayschedule('14.12.20');" onclick="dayschedule('14.12.20');;return false" title="Посмотреть расписание на этот день" >14.12.20, Пн</a></td></tr><tr BGCOLOR="#FFFFFF"><td class="hidden-scr-sm" rowspan="4"><a href="JavaScript:dayschedule('14.12.20');" onclick="dayschedule('14.12.20');;return false" title="Посмотреть расписание на этот день" >14.12.20, Пн</a></td>
+
+				<td>Русский язык</td>
+				<td class="text-center">Д</td>
+				<td>
+					<a href="JavaScript:SubmAssign(5273697,127486,3);" onclick="SubmAssign(5273697,127486,3);;return false" title="Смотреть подробности задания" >с.126 упр.274</a>
+				</td><td class="text-center">-</td>
+			</tr><tr BGCOLOR="#FFFFFF">
+
+				<td>ИЗО</td>
+				<td class="text-center">Д</td>
+				<td>
+					<a href="JavaScript:SubmAssign(5277130,127476,3);" onclick="SubmAssign(5277130,127476,3);;return false" title="Смотреть подробности задания" >Закончить работу в цвете</a>
+				</td><td class="text-center">-</td>
+			</tr><tr BGCOLOR="#FFFFFF">
+
+				<td>История</td>
+				<td class="text-center">Д</td>
+				<td>
+					<a href="JavaScript:SubmAssign(5279248,127480,3);" onclick="SubmAssign(5279248,127480,3);;return false" title="Смотреть подробности задания" >КРОССВОРД(по Греции) 15 слов</a>
+				</td><td class="text-center">5</td>
+			</tr><tr BGCOLOR="#FFFFFF">
+
+				<td>Литература</td>
+				<td class="text-center">Д</td>
+				<td>
+					<a href="JavaScript:SubmAssign(5273736,127485,3);" onclick="SubmAssign(5273736,127485,3);;return false" title="Смотреть подробности задания" >с.261-263 подготовить выразительное чтение стихотворения</a>
+				</td><td class="text-center">-</td>
+			</tr><tr class="visible-scr-row-sm"><td colspan="5" class="text-center bg-success"><a href="JavaScript:dayschedule('15.12.20');" onclick="dayschedule('15.12.20');;return false" title="Посмотреть расписание на этот день" >15.12.20, Вт</a></td></tr><tr BGCOLOR="#FFFFFF"><td class="hidden-scr-sm" rowspan="3"><a href="JavaScript:dayschedule('15.12.20');" onclick="dayschedule('15.12.20');;return false" title="Посмотреть расписание на этот день" >15.12.20, Вт</a></td>
+
+				<td>Русский родной язык</td>
+				<td class="text-center">О</td>
+				<td>
+					<a href="JavaScript:SubmAssign(5276397,127489,10);" onclick="SubmAssign(5276397,127489,10);;return false" title="Смотреть подробности задания" >Разговорная речь. Просьба, извинение как жанры разговорной речи</a>
+				</td><td class="text-center">4</td>
+			</tr><tr BGCOLOR="#FFFFFF">
+
+				<td>Английский язык</td>
+				<td class="text-center">Д</td>
+				<td>
+					<a href="JavaScript:SubmAssign(5278242,127484,3);" onclick="SubmAssign(5278242,127484,3);;return false" title="Смотреть подробности задания" >Учить наизусть слова из упр 1 стр 52</a>
+				</td><td class="text-center">-</td>
+			</tr><tr BGCOLOR="#FFFFFF">
+
+				<td>Основы духовно-нравственной культуры России</td>
+				<td class="text-center">Д</td>
+				<td>
+					<a href="JavaScript:SubmAssign(5276149,127490,3);" onclick="SubmAssign(5276149,127490,3);;return false" title="Смотреть подробности задания" >Прочитайте стихотворение А. Барто &quot;Рыцари&quot;, проанализируй поведение каждого из участников стихотворения</a>
+				</td><td class="text-center">-</td>
+			</tr><tr class="visible-scr-row-sm"><td colspan="5" class="text-center bg-success"><a href="JavaScript:dayschedule('16.12.20');" onclick="dayschedule('16.12.20');;return false" title="Посмотреть расписание на этот день" >16.12.20, Ср</a></td></tr><tr BGCOLOR="#FFFFFF"><td class="hidden-scr-sm" rowspan="7"><a href="JavaScript:dayschedule('16.12.20');" onclick="dayschedule('16.12.20');;return false" title="Посмотреть расписание на этот день" >16.12.20, Ср</a></td>
+
+				<td>Музыка</td>
+				<td class="text-center">Д</td>
+				<td>
+					<a href="JavaScript:SubmAssign(5279917,127477,3);" onclick="SubmAssign(5279917,127477,3);;return false" title="Смотреть подробности задания" >История создания &quot;Реквиема&quot; В.-А. Моцарта.</a>
+				</td><td class="text-center">-</td>
+			</tr><tr BGCOLOR="#FFFFFF">
+
+				<td>История</td>
+				<td class="text-center">Д</td>
+				<td>
+					<a href="JavaScript:SubmAssign(5279255,127480,3);" onclick="SubmAssign(5279255,127480,3);;return false" title="Смотреть подробности задания" >с.97 вопрос 4+рисунок греческого война/коробля/доспехов(на выбор. на доп оценку)</a>
+				</td><td class="text-center">-</td>
+			</tr><tr BGCOLOR="#FFFFFF">
+
+				<td>География</td>
+				<td class="text-center">Д</td>
+				<td>
+					<a href="JavaScript:SubmAssign(5280464,127475,3);" onclick="SubmAssign(5280464,127475,3);;return false" title="Смотреть подробности задания" >Прочитать пар 10-11, пересказ. ко не завершил работу с к.к, то завершаем. Стр 6-7 задание 1. Стр 8-9 задание 1,2,3.</a>
+				</td><td class="text-center">-</td>
+			</tr><tr BGCOLOR="#FFFFFF">
+
+				<td>Русский язык</td>
+				<td class="text-center">Д</td>
+				<td>
+					<a href="JavaScript:SubmAssign(5282942,127486,3);" onclick="SubmAssign(5282942,127486,3);;return false" title="Смотреть подробности задания" >с.124 упр.269</a>
+				</td><td class="text-center">-</td>
+			</tr><tr BGCOLOR="#FFFFFF">
+
+				<td>Русский язык</td>
+				<td class="text-center">И</td>
+				<td>
+					<a href="JavaScript:SubmAssign(5282939,127486,12);" onclick="SubmAssign(5282939,127486,12);;return false" title="Смотреть подробности задания" >Р/Р Выборочное изложение</a>
+				</td><td class="text-center">3</td>
+			</tr><tr BGCOLOR="#FFFFFF">
+
+				<td>Русский язык</td>
+				<td class="text-center">И</td>
+				<td>
+					<a href="JavaScript:SubmAssign(5282938,127486,12);" onclick="SubmAssign(5282938,127486,12);;return false" title="Смотреть подробности задания" >Р/Р Выборочное изложение</a>
+				</td><td class="text-center">5</td>
+			</tr><tr BGCOLOR="#FFFFFF">
+
+				<td>Литература</td>
+				<td class="text-center">Д</td>
+				<td>
+					<a href="JavaScript:SubmAssign(5283098,127485,3);" onclick="SubmAssign(5283098,127485,3);;return false" title="Смотреть подробности задания" >с.265-266 подготовить пересказ,  с.267-278 &quot;Кавказский пленник&quot;  читать</a>
+				</td><td class="text-center">-</td>
+			</tr><tr class="visible-scr-row-sm"><td colspan="5" class="text-center bg-success"><a href="JavaScript:dayschedule('17.12.20');" onclick="dayschedule('17.12.20');;return false" title="Посмотреть расписание на этот день" >17.12.20, Чт</a></td></tr><tr BGCOLOR="#FFFFFF"><td class="hidden-scr-sm" rowspan="5"><a href="JavaScript:dayschedule('17.12.20');" onclick="dayschedule('17.12.20');;return false" title="Посмотреть расписание на этот день" >17.12.20, Чт</a></td>
+
+				<td>Немецкий язык</td>
+				<td class="text-center">Д</td>
+				<td>
+					<a href="JavaScript:SubmAssign(5285609,135825,3);" onclick="SubmAssign(5285609,135825,3);;return false" title="Смотреть подробности задания" >Учить таблицу артиклей в именительном и винительном падежах; готовиться к словарному диктанту по животным: учебник: стр. 25 (диктую на русском - вы пишите на немецком с артиклями)</a>
+				</td><td class="text-center">5</td>
+			</tr><tr BGCOLOR="#FFFFFF">
+
+				<td>Немецкий язык</td>
+				<td class="text-center">О</td>
+				<td>
+					<a href="JavaScript:SubmAssign(5283869,135825,10);" onclick="SubmAssign(5283869,135825,10);;return false" title="Смотреть подробности задания" >Животные в Германии</a>
+				</td><td class="text-center">5</td>
+			</tr><tr BGCOLOR="#FFFFFF">
+
+				<td>Английский язык</td>
+				<td class="text-center">Д</td>
+				<td>
+					<a href="JavaScript:SubmAssign(5285544,127484,3);" onclick="SubmAssign(5285544,127484,3);;return false" title="Смотреть подробности задания" >стр 53, упр 4b подготовить 6 вопросов (How often do you...?)</a>
+				</td><td class="text-center">-</td>
+			</tr><tr BGCOLOR="#FFFFFF">
+
+				<td>Английский язык</td>
+				<td class="text-center">О</td>
+				<td>
+					<a href="JavaScript:SubmAssign(5285532,127484,10);" onclick="SubmAssign(5285532,127484,10);;return false" title="Смотреть подробности задания" >Слова по теме Work and Play</a>
+				</td><td class="text-center">5</td>
+			</tr><tr BGCOLOR="#FFFFFF">
+
+				<td>Русский язык</td>
+				<td class="text-center">Д</td>
+				<td>
+					<a href="JavaScript:SubmAssign(5286509,127486,3);" onclick="SubmAssign(5286509,127486,3);;return false" title="Смотреть подробности задания" >с.126 упр.276</a>
+				</td><td class="text-center">-</td>
+			</tr><tr class="visible-scr-row-sm"><td colspan="5" class="text-center bg-success"><a href="JavaScript:dayschedule('18.12.20');" onclick="dayschedule('18.12.20');;return false" title="Посмотреть расписание на этот день" >18.12.20, Пт</a></td></tr><tr BGCOLOR="#FFFFFF"><td class="hidden-scr-sm" rowspan="2"><a href="JavaScript:dayschedule('18.12.20');" onclick="dayschedule('18.12.20');;return false" title="Посмотреть расписание на этот день" >18.12.20, Пт</a></td>
+
+				<td>Немецкий язык</td>
+				<td class="text-center">Д</td>
+				<td>
+					<a href="JavaScript:SubmAssign(5289872,135825,3);" onclick="SubmAssign(5289872,135825,3);;return false" title="Смотреть подробности задания" >РТ: стр. 21, упр. 6b (столбик с отрицанием пишите в тонкой тетради), стр. 22, №7</a>
+				</td><td class="text-center">-</td>
+			</tr><tr BGCOLOR="#FFFFFF">
+
+				<td>Литература</td>
+				<td class="text-center">Д</td>
+				<td>
+					<a href="JavaScript:SubmAssign(5290091,127485,3);" onclick="SubmAssign(5290091,127485,3);;return false" title="Смотреть подробности задания" >подготовить пересказ с.278-286 (главы 3,4)</a>
+				</td><td class="text-center">-</td>
+			</tr><tr class="visible-scr-row-sm"><td colspan="5" class="text-center bg-success"><a href="JavaScript:dayschedule('19.12.20');" onclick="dayschedule('19.12.20');;return false" title="Посмотреть расписание на этот день" >19.12.20, Сб</a></td></tr><tr BGCOLOR="#FFFFFF"><td class="hidden-scr-sm" rowspan="1"><a href="JavaScript:dayschedule('19.12.20');" onclick="dayschedule('19.12.20');;return false" title="Посмотреть расписание на этот день" >19.12.20, Сб</a></td>
+
+				<td>Русский язык</td>
+				<td class="text-center">Д</td>
+				<td>
+					<a href="JavaScript:SubmAssign(5291290,127486,3);" onclick="SubmAssign(5291290,127486,3);;return false" title="Смотреть подробности задания" >с.127,130 правила</a>
+				</td><td class="text-center">-</td>
+			</tr>
+					</table>
+
+					<table border="0" cellpadding="0" cellspacing="0"><tr><td>Сайт «ЯКласс» — выгодная альтернатива репетитору. Помощь с домашними и контрольными работами по всем предметам, отчёты родителям на электронную почту.&nbsp;</td><td><a href="JavaScript:gotoYaClass();" onclick="gotoYaClass();;return false" title="Перейти на сайт &quot;ЯКласс&quot;"  style="color:blue"><img src="/images/Common/yakl_s.gif"></a></td></tr></table>
+
+					<div class="print-block" style="margin-top: 10px;">
+						<br>
+						Условные обозначения:
+						<div class="legend">
+						</div>
+					</div>
+
+					<div class="legend print-block">
+			<div>
+				<p><span class="legend-label">О</span><span class="legend-description"> — Ответ на уроке</span></p>
+				
+				<p><span class="legend-label">К</span><span class="legend-description"> — Контрольная работа</span></p>
+				
+				<p><span class="legend-label">МКР</span><span class="legend-description"> — Мониторинговая контрольная работа</span></p>
+				
+			</div>
+			<div>
+				<p><span class="legend-label">С</span><span class="legend-description"> — Самостоятельная работа</span></p>
+				
+				<p><span class="legend-label">Л</span><span class="legend-description"> — Лабораторная работа</span></p>
+				
+				<p><span class="legend-label">П</span><span class="legend-description"> — Проект</span></p>
+				
+			</div>
+			<div>
+				<p><span class="legend-label">В</span><span class="legend-description"> — Срезовая работа</span></p>
+				
+				<p><span class="legend-label">Р</span><span class="legend-description"> — Реферат</span></p>
+				
+				<p><span class="legend-label">Н</span><span class="legend-description"> — Диктант</span></p>
+				
+			</div>
+			<div>
+				<p><span class="legend-label">Ч</span><span class="legend-description"> — Сочинение</span></p>
+				
+				<p><span class="legend-label">И</span><span class="legend-description"> — Изложение</span></p>
+				
+				<p><span class="legend-label">А</span><span class="legend-description"> — Практическая работа</span></p>
+				
+			</div>
+			<div>
+				<p><span class="legend-label">З</span><span class="legend-description"> — Зачёт</span></p>
+				
+				<p><span class="legend-label">Т</span><span class="legend-description"> — Тестирование</span></p>
+				
+				<p><span class="legend-label">Д</span><span class="legend-description"> — Домашняя работа</span></p>
+				
+			</div>
+			<div>
+				<p><span class="legend-label">ТД</span><span class="legend-description"> — Терминологический диктант</span></p>
+				
+				<p><span class="legend-label">ФД</span><span class="legend-description"> — Фактологический диктант</span></p>
+				
+				<p><span class="legend-label">РД</span><span class="legend-description"> — Работа с документами</span></p>
+				
+			</div>
+			<div>
+				<p><span class="legend-label">Э</span><span class="legend-description"> — Эссе</span></p>
+				
+				<p><span class="legend-label">Ау</span><span class="legend-description"> — Аудирование</span></p>
+				
+				<p><span class="legend-label">МД</span><span class="legend-description"> — Математический диктант</span></p>
+				
+			</div>
+			<div>
+				<p><span class="legend-label">ПР</span><span class="legend-description"> — Проверочная работа</span></p>
+				
+				<p><span class="legend-label">УС</span><span class="legend-description"> — Устный счёт</span></p>
+				
+				<p><span class="legend-label">ОР</span><span class="legend-description"> — Обучающая работа</span></p>
+				
+			</div>
+			<div>
+				<p><span class="legend-label">СД</span><span class="legend-description"> — Словарный диктант</span></p>
+				
+				<p><span class="legend-label">Кк</span><span class="legend-description"> — Контурная карта</span></p>
+				
+				<p><span class="legend-label">МП</span><span class="legend-description"> — Мультимедийная презентация</span></p>
+				
+			</div>
+			<div>
+				<p><span class="legend-label">Ка</span><span class="legend-description"> — Каллиграфия</span></p>
+				
+				<p><span class="legend-label">Те</span><span class="legend-description"> — Тетрадь</span></p>
+				
+				<p><span class="legend-label">РЗ</span><span class="legend-description"> — Решение задач</span></p>
+				
+			</div>
+			<div>
+				<p><span class="legend-label">Сп</span><span class="legend-description"> — Списывание</span></p>
+				
+				<p><span class="legend-label">Рк</span><span class="legend-description"> — Рисунок</span></p>
+				
+			</div>
+	</div>
+				</div>
+		</div>
+	</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--content-->
+		<div class="height-footer-empty"></div>
+	</div>
+
+	
+	<form NAME="MenuForm" method="POST">
+		
+	<input type="hidden" name="LoginType" value="0">
+	<input type="hidden" name="AT" value="762637440636511633207324">
+	<input type="hidden" name="VER" value="693318059"><input type="hidden" name="MenuItem" value="16"><input type="hidden" name="TabItem" value="30"><input type="hidden" name="optional" value="optional">
+	</form>
+	<!-- Yandex.Metrika counter -->
+	<script type="text/javascript">
+		(function (d, w, c) {
+			(w[c] = w[c] || []).push(function () {
+				var id = 28935260;
+				try {
+					var appParams = {
+						install: w.location.host
+					};
+
+					if (typeof(appContext) != "undefined") {
+						appParams.productName = appContext.productName;
+						appParams.version = appContext.version;
+						appParams.ooType = "Общеобразовательное";
+						appParams.ooName = "Муниципальное автономное общеобразовательное учреждение средняя общеобразовательная школа №146".toLowerCase();
+						appParams.role = "Родитель";
+						appParams.serverId = appContext.serverId;
+					}
+
+					var metricaArgs = {
+						id: id,
+						accurateTrackBounce: true,
+						ut: "noindex",
+						params: appParams
+					}
+
+					w["yaCounter" + id] = new Ya.Metrika(metricaArgs);
+				} catch(e) {}
+			});
+ 
+			var n = d.getElementsByTagName("script")[0];
+
+			var f = function () {
+				n.parentNode.insertBefore(s, n);
+			};
+
+			var s = d.createElement("script");
+			s.type = "text/javascript";
+			s.async = true;
+			s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+ 
+			//if (w.opera == "[object Opera]") {
+			//	d.addEventListener("DOMContentLoaded", f, false);
+			//} else {
+			//	f();
+			//}
+			deferredResLoader.ready(f);
+		})(document, window, "yandex_metrika_callbacks");
+	</script>
+	<!-- /Yandex.Metrika counter -->
+
+
+<div class="footer">
+	<a class="logo-footer" href="#"></a>
+	<div class="block-debug-information">
+	<p class="p-line-height-09 p-font-weight-900">Сетевой Город. Образование &nbsp;3.10.31549 &nbsp;7.11.2016</p>	
+	<p class="debug_information">Exec time: 0,133c / 20.12.2020 12:20:59 &nbsp;<span>БД - рабочая</span>
+	</p>
+	<p class="p-line-height-09">&copy; 2007-2016 ИРТех, г. Самара. Все права защищены</p>	
+	</div>
+</div>
+
+</body>
+</html>
